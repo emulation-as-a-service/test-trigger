@@ -2,6 +2,7 @@ name: Trigger eaas-test
 on: push
 jobs:
   trigger:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
         with:
