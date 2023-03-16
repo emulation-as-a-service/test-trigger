@@ -1,0 +1,16 @@
+name: Trigger eaas-test
+on: push
+jobs:
+  trigger:
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PERSONAL_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+             owner: 'emulation-as-a-service',
+             repo: 'eaas-test',
+             workflow_id: 'test.yml',
+             ref: 'jurek-tests'
+            })
+            
